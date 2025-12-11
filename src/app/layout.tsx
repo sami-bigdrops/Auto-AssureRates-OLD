@@ -17,13 +17,13 @@ const mulish = Mulish({
 
 export const metadata: Metadata = {
   title: "Auto Insurance Quotes Free and Fast | AssureRates",
-  description: "Get free and fast auto insurance quotes from top insurance companies in Nigeria. Compare prices and save money on your auto insurance.",
-  keywords: "auto insurance, car insurance, insurance quotes, Nigeria, fast quotes, compare insurance",
+  description: "Get free and fast auto insurance quotes from top insurance companies in USA. Compare prices and save money on your auto insurance.",
+  keywords: "auto insurance, car insurance, insurance quotes, USA, fast quotes, compare insurance",
   authors: [{ name: "AssureRates" }],
   robots: "index, follow",
   openGraph: {
     title: "Auto Insurance Quotes Free and Fast | AssureRates",
-    description: "Get free and fast auto insurance quotes from top insurance companies in Nigeria. Compare prices and save money on your auto insurance.",
+    description: "Get free and fast auto insurance quotes from top insurance companies in USA. Compare prices and save money on your auto insurance.",
     type: "website",
     locale: "en_US",
   },
