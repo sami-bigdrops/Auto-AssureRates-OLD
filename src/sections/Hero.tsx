@@ -79,6 +79,9 @@ const Hero = () => {
     const utmSource = getCookie('utm_source') || ''
     const utmId = getCookie('utm_id') || ''
     const utmS1 = getCookie('utm_s1') || ''
+    const utmMedium = getCookie('utm_medium') || ''
+    const utmTerm = getCookie('geo_region_name') || ''
+    const utmCampaign = getCookie('geo_region_name') || ''
 
     // Build the redirect URL
     const baseUrl = 'https://auto.assurerates.com'
@@ -92,6 +95,9 @@ const Hero = () => {
     if (utmSource) params.set('subid', utmSource)
     if (utmId) params.set('subid2', utmId)
     if (utmS1) params.set('c1', utmS1)
+    if (utmMedium) params.set('medium', utmMedium)
+    if (utmTerm) params.set('term', utmTerm)
+    if (utmCampaign) params.set('campaign', utmCampaign)
 
     const redirectUrl = `${baseUrl}/form?${params.toString()}`
     
