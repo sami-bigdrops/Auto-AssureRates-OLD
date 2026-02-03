@@ -3,11 +3,13 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
+import { track } from '@vercel/analytics/react'
 
 const Hero = () => {
   const [zipCode, setZipCode] = useState('')
   const [cityName, setCityName] = useState('')
   const [isLoadingLocation, setIsLoadingLocation] = useState(false)
+  const [state, setState] = useState('')
 
   // Function to fetch user location using server-side IP detection (same as LeadProsper)
   const fetchUserLocation = useCallback(async () => {
@@ -30,15 +32,18 @@ const Hero = () => {
       if (data.city && data.zipCode) {
         setCityName(data.city)
         setZipCode(data.zipCode)
+        setState(data.state)
       } else {
         // Keep empty if location not available
         setCityName('')
         setZipCode('')
+        setState('')
       }
     } catch {
       // Keep empty on error
       setCityName('')
       setZipCode('')
+      setState('')
     } finally {
       setIsLoadingLocation(false)
     }
@@ -79,9 +84,6 @@ const Hero = () => {
     const utmSource = getCookie('utm_source') || ''
     const utmId = getCookie('utm_id') || ''
     const utmS1 = getCookie('utm_s1') || ''
-    const utmMedium = getCookie('utm_medium') || ''
-    const utmTerm = getCookie('geo_region_name') || ''
-    const utmCampaign = getCookie('geo_region_name') || ''
 
     // Build the redirect URL
     const baseUrl = 'https://auto.assurerates.com'
@@ -95,11 +97,10 @@ const Hero = () => {
     if (utmSource) params.set('subid', utmSource)
     if (utmId) params.set('subid2', utmId)
     if (utmS1) params.set('c1', utmS1)
-    if (utmMedium) params.set('medium', utmMedium)
-    if (utmTerm) params.set('term', utmTerm)
-    if (utmCampaign) params.set('campaign', utmCampaign)
 
     const redirectUrl = `${baseUrl}/form?${params.toString()}`
+
+    track('zip_submission', { state, zip_code: zipCode })
     
     // Redirect to the quote page
     window.location.href = redirectUrl
