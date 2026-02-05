@@ -4,8 +4,8 @@ import Image from 'next/image'
 // Move partner data outside component to prevent recreation on each render
 const partner = [
     {
-        name: 'American Family Insurance',
-        image: '/partner-1.svg'
+        name: 'Nationwide',
+        image: '/nationwide.svg'
     },
     {
         name: 'Allstate',
